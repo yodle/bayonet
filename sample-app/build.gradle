@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.yodle.android.bayonet"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.yodle.android.bayonet.EspressoTestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+afterEvaluate {
+    tasks['assembleDebugUnitTest'].dependsOn(tasks['assemble'])
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.dagger:dagger:2.5'
+    apt 'com.google.dagger:dagger-compiler:2.5'
+
+    testCompile project(':bayonet')
+    testCompile('org.robolectric:robolectric:3.1.4')
+    testCompile 'junit:junit:4.12'
+    testApt 'com.google.dagger:dagger-compiler:2.5'
+
+    androidTestCompile project(':bayonet')
+    androidTestCompile 'org.mockito:mockito-core:1.9.5'
+    androidTestCompile "com.crittercism.dexmaker:dexmaker:1.4"
+    androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:1.4"
+    androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:1.4"
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestApt 'com.google.dagger:dagger-compiler:2.5'
+}

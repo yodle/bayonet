@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bayonet</string>
+    <string name="username_text_hint">Enter Username</string>
+    <string name="password_text_hint">Enter Password</string>
+    <string name="login_button_text">Log In</string>
+    <string name="validation_error">Required</string>
+    <string name="login_success">You are now logged in.</string>
+    <string name="login_failure">Incorrect username or password.</string>
+</resources>
