@@ -1,6 +1,8 @@
 # bayonet
 Bayonet provides a framework to selectively inject mock or real class instances. It is meant to work with Android applications using Dagger 2 for dependency injection.
 
+Check out our [blog post](https://medium.com/yodle-tech-blog/android-testing-with-dagger-and-mockito-3a6e93e7c3cd#.2b7swsq02) on Medium to learn more.
+
 ## Usage
 Our `sample-app` contains Dagger modules for the Robolectric and Espresso contexts which inject most classes as a Mockito mock by default. Simply annotate a Dagger injected field with the `@RealClass` to prevent mock behavior.
 
